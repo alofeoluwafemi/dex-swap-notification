@@ -1,0 +1,25 @@
+{
+  "name": "watch",
+  "version": "1.0.0",
+  "description": "Watch MContent Pancake V2 LP Address for new swap & transfer events",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "MContent",
+    "Notification",
+    "Pancake",
+    "V2"
+  ],
+  "author": "oluwafemi@mcontent.net",
+  "license": "ISC",
+  "dependencies": {
+    "bignumber.js": "^9.1.0",
+    "bn.js": "^5.2.1",
+    "dotenv": "^16.0.3",
+    "ethers": "^5.7.2",
+    "form-data": "^4.0.0",
+    "mailgun.js": "^8.0.2"
+  }
+}
