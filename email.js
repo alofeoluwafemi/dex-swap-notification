@@ -41,15 +41,8 @@ const sendEmail = async (data) => {
   //   console.log(htmlMsg);
   mg.messages
     .create(process.env.MAILGUN_DOMAIN, {
-      from: "MContent Watch 👀 <market@decasoft.io>",
-      to: [
-        "oluwafemi@mcontent.net",
-        "oluwafemialofe@gmail.com",
-        "hani@mcontent.net",
-        "umair@mcontent.net",
-        "ryan@mcontent.net",
-        "franky@mcontent.net"
-      ],
+      from: "MContent Watch 👀 <info@decasoft.io>",
+      to: ["oluwafemialofe@gmail.com"],
       subject: `Pancake V2 MContent Token Swap | ${data.transactionType}`,
       html: htmlMsg
     })

@@ -1,10 +1,11 @@
 const { ethers, BigNumber } = require("ethers");
+require("dotenv").config();
 const { utils, Contract } = ethers;
 const { sendEmail } = require("./email.js");
 const provider = new ethers.providers.JsonRpcProvider(
   "https://bsc-dataseed1.binance.org/"
 );
-const PancakeSwapV2Contract = process.env.PancakeSwapV2Contract;
+const PancakeSwapV2Contract = process.env.PANCAKEV2;
 const swapAbi = [
   "event Swap(address indexed sender, uint amount0In, uint amount1In, uint amount0Out, uint amount1Out, address indexed to)"
 ];
