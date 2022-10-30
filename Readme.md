@@ -5,3 +5,5 @@ Simple script for watching Pancake Swap LP for MContent Token and send email not
 ## Usage
 
 Install `forever` npm package globally on your server and keep the script running.
+
+NB: Configure your forever.json
