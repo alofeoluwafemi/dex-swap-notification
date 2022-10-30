@@ -1,4 +1,5 @@
 const { ethers, BigNumber } = require("ethers");
+const fetch = require("node-fetch");
 require("dotenv").config();
 const { utils, Contract } = ethers;
 const { sendEmail } = require("./email.js");
@@ -16,7 +17,6 @@ const SELL = "Sell";
 /**
  * Todo:
  * Mailgun subscription ⚠️
- * Infura subscription ⚠️
  */
 
 /**
@@ -40,6 +40,28 @@ const mock = {
   from: "0x3472059945ee170660a9A97892a3cf77857Eba3A",
   tokenValue: BigNumber.from(500)
 };
+
+async function getBnbPrice() {
+  const response = await fetch(
+    `https://api.bscscan.com/api?module=stats&action=bnbprice&apikey=${process.env.BSC_KEY}`
+  );
+
+  if (response.ok) {
+    const data = await response.json();
+
+    return data.result.ethusd;
+  } else {
+    return 0;
+  }
+}
+
+async function test() {
+  const bnbPrice = await getBnbPrice();
+  const bnbPricePadded = bnbPrice * 1000;
+
+  const salesPrice = BigNumber.from(2345);
+  console.log(salesPrice.mul(BigNumber.from(bnbPricePadded)));
+}
 
 async function main() {
   mv2Contract.on(
@@ -76,8 +98,14 @@ async function main() {
       }
 
       console.log(data);
+      const bnbPrice = await getBnbPrice();
+      const bnbValueUsd = Number(utils.formatEther(data.bnbValue)) * bnbPrice;
 
-      sendEmail(data);
+      console.log("BNB Price: ", bnbPrice);
+      console.log("Transaction BNB Value in USD: ", bnbValueUsd);
+
+      //Only email when limit is above 2k$
+      if (bnbValueUsd >= 2000) sendEmail(data);
     }
   );
 }
