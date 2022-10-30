@@ -1,0 +1,9 @@
+{
+  "uid": "notify",
+  "append": true,
+  "watch": true,
+  "script": "./index.js",
+  "logFile": "./logs/forever.log",
+  "outFile": "./logs/out.log",
+  "errFile": "./logs/error.log"
+}
