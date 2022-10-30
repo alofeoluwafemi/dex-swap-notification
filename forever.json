@@ -3,7 +3,7 @@
   "append": true,
   "watch": true,
   "script": "./index.js",
-  "logFile": "./dex-swap-notification/logs/forever.log",
-  "outFile": "./dex-swap-notification/logs/out.log",
-  "errFile": "./dex-swap-notification/logs/error.log"
+  "logFile": "/root/dex-swap-notification/logs/forever.log",
+  "outFile": "/root/dex-swap-notification/logs/out.log",
+  "errFile": "/root/dex-swap-notification/logs/error.log"
 }
