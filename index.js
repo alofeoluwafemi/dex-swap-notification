@@ -42,7 +42,6 @@ const mock = {
 };
 
 async function main() {
-  sendEmail(mock);
   mv2Contract.on(
     "Swap",
     async (sender, amount0In, amount1In, amount0Out, amount1Out, to, event) => {
@@ -67,9 +66,11 @@ async function main() {
       data.from = transaction.from;
 
       if (transactionType == BUY) {
+        console.log("BUY");
         //amount0Out - 10% tax is what user gets
-        data.tokenValue = utils.formatEther(amount0Out.sub(amount0Out.div(10)));
+        data.tokenValue = amount0Out.sub(amount0Out.div(10)).toString();
       } else {
+        console.log("SELL");
         //amount0In without deductiong 10% Tax
         data.tokenValue = amount0In;
       }

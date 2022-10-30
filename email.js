@@ -3,6 +3,8 @@ const Mailgun = require("mailgun.js");
 const mailgun = new Mailgun(formData);
 const { ethers } = require("ethers");
 const { utils } = ethers;
+const recipients = require("./recipient.json");
+
 require("dotenv").config();
 
 const mg = mailgun.client({
@@ -42,7 +44,7 @@ const sendEmail = async (data) => {
   mg.messages
     .create(process.env.MAILGUN_DOMAIN, {
       from: "MContent Watch 👀 <info@decasoft.io>",
-      to: ["oluwafemialofe@gmail.com"],
+      to: recipients,
       subject: `Pancake V2 MContent Token Swap | ${data.transactionType}`,
       html: htmlMsg
     })
